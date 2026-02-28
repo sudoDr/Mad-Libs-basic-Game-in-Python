@@ -1,0 +1,47 @@
+# Step 1: Create the 'Blueprint' for a question
+class Question:
+    def __init__(self, prompt, answer):
+        self.prompt = prompt
+        self.answer = answer
+
+
+# Step 2: Write out your questions and options
+question_prompts = [
+    "What color are apples?\n(a) Red/Green\n(b) Purple\n(c) Orange\n\n",
+    "What color are bananas?\n(a) Teal\n(b) Magenta\n(c) Yellow\n\n",
+    "What color are strawberries?\n(a) Yellow\n(b) Red\n(c) Blue\n\n"
+]
+
+# Step 3: Create an array of Question objects
+questions = [
+    Question(question_prompts[0], "a"),
+    Question(question_prompts[1], "c"),
+    Question(question_prompts[2], "b"),
+]
+
+
+# Step 4: The function to run the quiz
+def run_test(questions):
+    score = 0
+    for question in questions:
+        # Ask the user for their answer
+        answer = input(question.prompt)
+
+        # Check if they are right
+        if answer.lower() == question.answer:
+            score += 1
+            print("Correct!\n")
+        else:
+            print(f"Wrong! The correct answer was {question.answer}.\n")
+
+    print(f"You got {score}/{len(questions)} correct!")
+
+    if score == len(questions):
+        print("Perfect score! 🌟")
+    elif score > 0:
+        print("Not bad!")
+    else:
+        print("Better luck next time...")
+
+# Start the game
+run_test(questions)
